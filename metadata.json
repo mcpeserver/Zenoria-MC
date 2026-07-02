@@ -1,0 +1,6 @@
+{
+  "name": "Zenoria MC",
+  "description": "Server Minecraft Survival Economy Java & Bedrock. Online 24 jam dengan sinyal stabil, cocok untuk grinding santuy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

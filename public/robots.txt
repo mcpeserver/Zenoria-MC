@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zenoria.arqonara.my.id/sitemap.xml
