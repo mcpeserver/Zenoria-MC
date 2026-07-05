@@ -30,15 +30,29 @@ export default function Header({ onCopyIP, isCopied }: HeaderProps) {
       {/* Top Header Watermark (RAN DEV) - Sangat Jelas & Mencolok */}
       <div 
         id="top-watermark"
-        className="w-full bg-gradient-to-r from-emerald-950 via-lime-950 to-emerald-950 text-lime-400 text-xs md:text-sm py-2 px-4 text-center font-medium border-b border-lime-500/20 shadow-inner flex flex-col md:flex-row items-center justify-center gap-1 md:gap-3"
+        className="w-full bg-gradient-to-r from-emerald-950 via-[#0a160d] to-emerald-950 text-lime-400 text-xs md:text-sm py-2 px-4 text-center font-medium border-b border-lime-500/20 shadow-inner flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4"
       >
-        <span>
-          Developed by <span className="font-bold text-yellow-400">{siteConfig.developer.name}</span> (WhatsApp: <span className="font-mono text-white underline">{siteConfig.developer.whatsapp}</span>)
-        </span>
-        <span className="hidden md:inline text-lime-600">|</span>
-        <span className="text-lime-200 italic text-[11px] md:text-xs">
-          "{siteConfig.developer.pitch}"
-        </span>
+        <div className="flex flex-wrap items-center justify-center gap-1.5 md:gap-2">
+          <span>
+            Developed by <span className="font-bold text-yellow-400">{siteConfig.developer.name}</span> (WhatsApp: <span className="font-mono text-white underline">{siteConfig.developer.whatsapp}</span>)
+          </span>
+          <span className="hidden md:inline text-lime-600">|</span>
+          <span className="text-lime-200 italic text-[11px] md:text-xs">
+            "{siteConfig.developer.pitch}"
+          </span>
+        </div>
+        <a
+          href="https://sfl.gl/x2ic"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-yellow-400 text-black font-semibold text-[11px] hover:bg-yellow-300 transition-all duration-300 shadow-md hover:scale-105"
+        >
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500"></span>
+          </span>
+          <span>Lihat Website Lain &raquo;</span>
+        </a>
       </div>
 
       {/* Main Navbar */}
@@ -64,12 +78,6 @@ export default function Header({ onCopyIP, isCopied }: HeaderProps) {
                   NEW ERA
                 </span>
               </span>
-              <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="w-2 h-2 rounded-full bg-lime-500 animate-pulse" />
-                <span className="text-[10px] font-mono text-lime-400 uppercase tracking-widest font-semibold">
-                  {siteConfig.server.uptime}
-                </span>
-              </div>
             </div>
           </a>
 

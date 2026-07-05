@@ -80,10 +80,20 @@ export default function Social() {
           </div>
 
           {/* WATERMARK PENGEMBANG (RAN DEV - DI FOOTER) - Tegas & Serasi */}
-          <div className="py-2.5 px-6 rounded-full bg-[#0d0f14] border border-lime-500/10 inline-flex items-center gap-2 text-xs text-lime-400/90 tracking-wide shadow-md">
+          <div className="py-2.5 px-6 rounded-2xl md:rounded-full bg-[#0d0f14] border border-lime-500/10 flex flex-col md:flex-row items-center gap-2.5 md:gap-3 text-xs text-lime-400/90 tracking-wide shadow-md max-w-2xl text-center md:text-left">
             <span>
               Website dikembangkan oleh <span className="font-bold text-yellow-400">{siteConfig.developer.name}</span> (WhatsApp: <span className="font-mono text-white select-all font-semibold">{siteConfig.developer.whatsapp}</span>)
             </span>
+            <span className="hidden md:inline text-lime-800">|</span>
+            <a
+              href="https://sfl.gl/x2ic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1 rounded-full bg-yellow-400 text-black font-semibold text-[11px] hover:bg-yellow-300 transition-all duration-300 flex items-center gap-1 hover:scale-105 shrink-0"
+            >
+              <span>Lihat Website Lain</span>
+              <span>&raquo;</span>
+            </a>
           </div>
 
           {/* Copyright Text */}
