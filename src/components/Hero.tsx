@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { siteConfig } from "../config/site";
 import { Copy, Check, MessageSquare, ShieldAlert, Terminal, Users, Wifi, Globe } from "lucide-react";
+import logoImg from "../assets/images/logo.jpg";
+import heroBg from "../assets/images/background.jpg";
 
 interface HeroProps {
   onCopyIP: () => void;
@@ -60,13 +62,13 @@ export default function Hero({ onCopyIP, isCopied }: HeroProps) {
       {/* Background Cinematic with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero-bg.webp"
+          src={heroBg}
           alt="Zenoria MC Cinematic Background"
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-center scale-105 filter brightness-45 contrast-110"
+          className="w-full h-full object-cover object-center scale-105 filter brightness-[0.35] contrast-[1.15]"
         />
-        {/* Gradients to blend background cleanly */}
-        <div className="absolute inset-0 bg-radial-at-c from-lime-950/20 via-[#0c0e12]/80 to-[#0c0e12] z-10" />
+        {/* Cinematic Radial and linear gradient atmosphere */}
+        <div className="absolute inset-0 bg-radial-at-c from-lime-950/25 via-[#0c0e12]/85 to-[#0c0e12] z-10" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0c0e12]/40 to-[#0c0e12] z-10" />
       </div>
 
@@ -83,22 +85,25 @@ export default function Hero({ onCopyIP, isCopied }: HeroProps) {
           transition={{ duration: 1, ease: "easeOut" }}
           className="mb-6 md:mb-8"
         >
-          <div className="relative p-2 rounded-2xl bg-[#0c0e12]/60 border border-lime-500/20 shadow-2xl backdrop-blur-md max-w-[200px] md:max-w-[260px] aspect-square flex items-center justify-center">
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="relative p-2 rounded-3xl bg-[#0c0e12]/80 border-2 border-lime-500/30 shadow-2xl backdrop-blur-md w-36 h-36 md:w-44 md:h-44 flex items-center justify-center select-none"
+          >
             {/* Soft backdrop glow */}
-            <div className="absolute inset-0 bg-lime-500/5 rounded-2xl blur-xl animate-pulse pointer-events-none" />
-            <motion.img
-              src="/logo.png"
+            <div className="absolute inset-0 bg-lime-500/10 rounded-3xl blur-2xl animate-pulse pointer-events-none" />
+            
+            <img
+              src={logoImg}
               alt="Zenoria MC Shield Logo"
               referrerPolicy="no-referrer"
-              className="w-full h-full object-contain relative z-10 rounded-xl"
-              animate={{ y: [0, -6, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              className="w-full h-full object-contain relative z-10 rounded-2xl"
             />
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Server Tag / Status badge */}

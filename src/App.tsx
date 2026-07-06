@@ -9,12 +9,28 @@ import Social from "./components/Social";
 import { siteConfig } from "./config/site";
 import { ArrowUp, CheckCircle, Copy, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { DeveloperData } from "./types";
 
 export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const [developerData, setDeveloperData] = useState<DeveloperData | null>(null);
+
+  // Fetch developer configuration dynamically from remote URL
+  useEffect(() => {
+    fetch("https://raw.githubusercontent.com/mcpeserver/MyAPI/main/config.json")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.name) {
+          setDeveloperData(data);
+        }
+      })
+      .catch((err) => {
+        console.error("Gagal mengambil data developer:", err);
+      });
+  }, []);
 
   // Monitor scroll for progress bar & back-to-top button visibility
   useEffect(() => {
@@ -72,7 +88,7 @@ export default function App() {
       />
 
       {/* Header component */}
-      <Header onCopyIP={handleCopyIP} isCopied={isCopied} />
+      <Header onCopyIP={handleCopyIP} isCopied={isCopied} developerData={developerData} />
 
       {/* Main Sections Wrapper */}
       <main className="w-full">
@@ -92,7 +108,7 @@ export default function App() {
         <Ranks />
 
         {/* 6. Pusat Tautan & Footer (Social) */}
-        <Social />
+        <Social developerData={developerData} />
       </main>
 
       {/* Interactive Back to Top Button */}

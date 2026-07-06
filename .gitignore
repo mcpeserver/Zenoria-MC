@@ -6,3 +6,19 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Vercel and build systems
+.vercel/
+.next/
+out/
+.parcel-cache/
+.turbo/

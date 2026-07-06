@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "Zenoria MC",
   title: "Zenoria MC | New Era | Survival Economy Minecraft Server",
-  description: "Server Minecraft Survival Economy Java & Bedrock. Online 24 jam dengan sinyal stabil, cocok untuk grinding santuy.",
+  description: "Server Minecraft Survival Economy Java & Bedrock dengan sinyal stabil, cocok untuk grinding santuy.",
   domain: "zenoria.arqonara.my.id",
   server: {
     type: "Survival Economy",
-    uptime: "Online 24 Jam",
+    uptime: "Sinyal Stabil",
     bedrock: {
       ip: "zenoria.arqonara.my.id",
       port: 25538

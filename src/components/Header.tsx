@@ -1,15 +1,34 @@
 import { useState, useEffect } from "react";
 import { siteConfig } from "../config/site";
 import { Copy, Check, Menu, X, Shield, Wifi } from "lucide-react";
+import logoImg from "../assets/images/logo.jpg";
+import { DeveloperData } from "../types";
 
 interface HeaderProps {
   onCopyIP: () => void;
   isCopied: boolean;
+  developerData: DeveloperData | null;
 }
 
-export default function Header({ onCopyIP, isCopied }: HeaderProps) {
+export default function Header({ onCopyIP, isCopied, developerData }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const dev = developerData || {
+    name: "Ran Dev",
+    contact: {
+      phone: "0895602592430",
+      whatsapp: "0895602592430"
+    },
+    community: {
+      name: "Ran Dev Community",
+      website: "https://community.randev.com",
+      discord: "https://discord.gg/9KUN2byKRM"
+    },
+    website: {
+      portfolio: "https://sfl.gl/x2ic"
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,32 +46,48 @@ export default function Header({ onCopyIP, isCopied }: HeaderProps) {
           : "bg-[#0c0e12]/40 backdrop-blur-sm border-b border-lime-500/5"
       }`}
     >
-      {/* Top Header Watermark (RAN DEV) - Sangat Jelas & Mencolok */}
+      {/* Top Header Watermark (RAN DEV & Community) */}
       <div 
         id="top-watermark"
-        className="w-full bg-gradient-to-r from-emerald-950 via-[#0a160d] to-emerald-950 text-lime-400 text-xs md:text-sm py-2 px-4 text-center font-medium border-b border-lime-500/20 shadow-inner flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4"
+        className="w-full bg-[#0a0c10]/95 backdrop-blur-md text-gray-300 text-[10px] md:text-xs py-2 px-4 border-b border-lime-500/10 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-2.5 z-50 relative"
       >
-        <div className="flex flex-wrap items-center justify-center gap-1.5 md:gap-2">
-          <span>
-            Developed by <span className="font-bold text-yellow-400">{siteConfig.developer.name}</span> (WhatsApp: <span className="font-mono text-white underline">{siteConfig.developer.whatsapp}</span>)
+        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1">
+          <span className="flex items-center gap-1.5 text-lime-400 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse" />
+            Developer: <a href={dev.website.portfolio} target="_blank" rel="noopener noreferrer" className="hover:underline text-yellow-400 font-bold">{dev.name}</a>
           </span>
-          <span className="hidden md:inline text-lime-600">|</span>
-          <span className="text-lime-200 italic text-[11px] md:text-xs">
-            "{siteConfig.developer.pitch}"
+          <span className="hidden sm:inline text-gray-700">|</span>
+          <span className="text-gray-400 flex items-center gap-1">
+            WhatsApp: <a href={`https://wa.me/${dev.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="hover:text-white font-mono transition-colors font-semibold">{dev.contact.whatsapp}</a>
           </span>
         </div>
-        <a
-          href="https://sfl.gl/x2ic"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-yellow-400 text-black font-semibold text-[11px] hover:bg-yellow-300 transition-all duration-300 shadow-md hover:scale-105"
-        >
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500"></span>
-          </span>
-          <span>Lihat Website Lain &raquo;</span>
-        </a>
+
+        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3">
+          <a
+            href={dev.community.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-lime-500/10 text-lime-300 border border-lime-500/20 hover:bg-lime-500/20 transition-all duration-300 text-[10px] font-semibold"
+          >
+            <span>🌐 {dev.community.name}</span>
+          </a>
+          <a
+            href={dev.community.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 hover:bg-indigo-500/20 transition-all duration-300 text-[10px] font-semibold"
+          >
+            <span>🎮 Join Discord Community</span>
+          </a>
+          <a
+            href={dev.website.portfolio}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-yellow-400/10 text-yellow-300 border border-yellow-400/20 hover:bg-yellow-400/20 transition-all duration-300 text-[10px] font-bold"
+          >
+            <span>✨ Server Lain &raquo;</span>
+          </a>
+        </div>
       </div>
 
       {/* Main Navbar */}
@@ -66,10 +101,10 @@ export default function Header({ onCopyIP, isCopied }: HeaderProps) {
           {/* Logo & Brand Name */}
           <a href="#" className="flex items-center gap-3 group">
             <img
-              src="/logo.png"
+              src={logoImg}
               alt="Zenoria MC Logo"
               referrerPolicy="no-referrer"
-              className="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-300 group-hover:scale-110 rounded-lg border border-lime-500/15 bg-[#080a0d] p-0.5"
+              className="w-10 h-10 md:w-11 md:h-11 object-contain transition-transform duration-300 group-hover:scale-110 rounded-lg border border-lime-500/20 bg-[#080a0d] p-0.5"
             />
             <div>
               <span className="font-display font-bold text-lg md:text-xl text-white tracking-wider flex items-center gap-1.5">

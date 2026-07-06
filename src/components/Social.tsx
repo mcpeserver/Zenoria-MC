@@ -1,7 +1,29 @@
 import { siteConfig } from "../config/site";
 import { MessageCircle, MessageSquare, Shield, HelpCircle, Heart } from "lucide-react";
+import logoImg from "../assets/images/logo.jpg";
+import { DeveloperData } from "../types";
 
-export default function Social() {
+interface SocialProps {
+  developerData: DeveloperData | null;
+}
+
+export default function Social({ developerData }: SocialProps) {
+  const dev = developerData || {
+    name: "Ran Dev",
+    contact: {
+      phone: "0895602592430",
+      whatsapp: "0895602592430"
+    },
+    community: {
+      name: "Ran Dev Community",
+      website: "https://community.randev.com",
+      discord: "https://discord.gg/9KUN2byKRM"
+    },
+    website: {
+      portfolio: "https://sfl.gl/x2ic"
+    }
+  };
+
   return (
     <section id="social" className="relative pt-20 pb-12 px-4 z-20 overflow-hidden">
       {/* Decorative Blur Backgrounds */}
@@ -69,31 +91,57 @@ export default function Social() {
           {/* Logo representation in footer */}
           <div className="flex items-center gap-2.5">
             <img
-              src="/logo.png"
-              alt="Zenoria MC Shield Logo"
+              src={logoImg}
+              alt="Zenoria MC Logo"
               referrerPolicy="no-referrer"
-              className="w-8 h-8 object-contain"
+              className="w-8 h-8 object-contain rounded border border-gray-900 bg-[#080a0d] p-0.5"
             />
             <span className="font-display font-bold text-base text-white tracking-wider">
               {siteConfig.name}
             </span>
           </div>
 
-          {/* WATERMARK PENGEMBANG (RAN DEV - DI FOOTER) - Tegas & Serasi */}
-          <div className="py-2.5 px-6 rounded-2xl md:rounded-full bg-[#0d0f14] border border-lime-500/10 flex flex-col md:flex-row items-center gap-2.5 md:gap-3 text-xs text-lime-400/90 tracking-wide shadow-md max-w-2xl text-center md:text-left">
-            <span>
-              Website dikembangkan oleh <span className="font-bold text-yellow-400">{siteConfig.developer.name}</span> (WhatsApp: <span className="font-mono text-white select-all font-semibold">{siteConfig.developer.whatsapp}</span>)
-            </span>
-            <span className="hidden md:inline text-lime-800">|</span>
-            <a
-              href="https://sfl.gl/x2ic"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1 rounded-full bg-yellow-400 text-black font-semibold text-[11px] hover:bg-yellow-300 transition-all duration-300 flex items-center gap-1 hover:scale-105 shrink-0"
-            >
-              <span>Lihat Website Lain</span>
-              <span>&raquo;</span>
-            </a>
+          {/* WATERMARK PENGEMBANG (RAN DEV & COMMUNITY) */}
+          <div className="py-4 px-6 rounded-3xl bg-[#090b0e] border border-lime-500/10 flex flex-col items-center gap-3 text-xs text-gray-400 tracking-wide shadow-xl max-w-3xl text-center">
+            <div className="flex flex-col sm:flex-row items-center gap-2">
+              <span>
+                Website dikembangkan oleh <a href={dev.website.portfolio} target="_blank" rel="noopener noreferrer" className="font-bold text-yellow-400 hover:underline">{dev.name}</a>
+              </span>
+              <span className="hidden sm:inline text-lime-800">|</span>
+              <span>
+                WhatsApp: <a href={`https://wa.me/${dev.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" className="font-mono text-white select-all font-semibold hover:text-lime-400 transition-colors">{dev.contact.whatsapp}</a>
+              </span>
+            </div>
+
+            <div className="w-full h-[1px] bg-gray-800/65" />
+
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-lime-500/80">Developer Community:</span>
+              <a
+                href={dev.community.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full bg-[#11141a] border border-lime-500/20 text-lime-400 font-semibold text-[11px] hover:bg-lime-500/15 hover:border-lime-500/35 transition-all duration-300"
+              >
+                🌐 {dev.community.name}
+              </a>
+              <a
+                href={dev.community.discord}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full bg-[#11141a] border border-indigo-500/20 text-indigo-400 font-semibold text-[11px] hover:bg-indigo-500/15 hover:border-indigo-500/35 transition-all duration-300"
+              >
+                🎮 Join Community Discord
+              </a>
+              <a
+                href={dev.website.portfolio}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 rounded-full bg-yellow-400 text-black font-bold text-[11px] hover:bg-yellow-300 transition-all duration-300 flex items-center gap-1 hover:scale-105 shrink-0"
+              >
+                <span>Lihat Website Lain &raquo;</span>
+              </a>
+            </div>
           </div>
 
           {/* Copyright Text */}
