@@ -3,6 +3,8 @@ import { MessageCircle, MessageSquare, Shield, HelpCircle, Heart } from "lucide-
 import logoImg from "../assets/images/logo.jpg";
 import { DeveloperData } from "../types";
 
+const logoSrc = `${logoImg}?v=2.1.0`;
+
 interface SocialProps {
   developerData: DeveloperData | null;
 }
@@ -91,7 +93,7 @@ export default function Social({ developerData }: SocialProps) {
           {/* Logo representation in footer */}
           <div className="flex items-center gap-2.5">
             <img
-              src={logoImg}
+              src={logoSrc}
               alt="Zenoria MC Logo"
               referrerPolicy="no-referrer"
               className="w-8 h-8 object-contain rounded border border-gray-900 bg-[#080a0d] p-0.5"

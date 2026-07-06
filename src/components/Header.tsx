@@ -4,6 +4,8 @@ import { Copy, Check, Menu, X, Shield, Wifi } from "lucide-react";
 import logoImg from "../assets/images/logo.jpg";
 import { DeveloperData } from "../types";
 
+const logoSrc = `${logoImg}?v=2.1.0`;
+
 interface HeaderProps {
   onCopyIP: () => void;
   isCopied: boolean;
@@ -101,7 +103,7 @@ export default function Header({ onCopyIP, isCopied, developerData }: HeaderProp
           {/* Logo & Brand Name */}
           <a href="#" className="flex items-center gap-3 group">
             <img
-              src={logoImg}
+              src={logoSrc}
               alt="Zenoria MC Logo"
               referrerPolicy="no-referrer"
               className="w-10 h-10 md:w-11 md:h-11 object-contain transition-transform duration-300 group-hover:scale-110 rounded-lg border border-lime-500/20 bg-[#080a0d] p-0.5"
@@ -109,9 +111,6 @@ export default function Header({ onCopyIP, isCopied, developerData }: HeaderProp
             <div>
               <span className="font-display font-bold text-lg md:text-xl text-white tracking-wider flex items-center gap-1.5">
                 {siteConfig.name}
-                <span className="text-yellow-400 font-mono text-[10px] md:text-xs px-1.5 py-0.5 rounded bg-yellow-400/10 border border-yellow-400/20">
-                  NEW ERA
-                </span>
               </span>
             </div>
           </a>

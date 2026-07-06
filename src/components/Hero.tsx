@@ -5,6 +5,9 @@ import { Copy, Check, MessageSquare, ShieldAlert, Terminal, Users, Wifi, Globe }
 import logoImg from "../assets/images/logo.jpg";
 import heroBg from "../assets/images/background.jpg";
 
+const logoSrc = `${logoImg}?v=2.1.0`;
+const heroBgSrc = `${heroBg}?v=2.1.0`;
+
 interface HeroProps {
   onCopyIP: () => void;
   isCopied: boolean;
@@ -62,7 +65,7 @@ export default function Hero({ onCopyIP, isCopied }: HeroProps) {
       {/* Background Cinematic with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src={heroBg}
+          src={heroBgSrc}
           alt="Zenoria MC Cinematic Background"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center scale-105 filter brightness-[0.35] contrast-[1.15]"
@@ -98,7 +101,7 @@ export default function Hero({ onCopyIP, isCopied }: HeroProps) {
             <div className="absolute inset-0 bg-lime-500/10 rounded-3xl blur-2xl animate-pulse pointer-events-none" />
             
             <img
-              src={logoImg}
+              src={logoSrc}
               alt="Zenoria MC Shield Logo"
               referrerPolicy="no-referrer"
               className="w-full h-full object-contain relative z-10 rounded-2xl"
